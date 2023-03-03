@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="style.css">
   <title>Cleanup Clicker</title>
 
-  <style>
+  <!-- <style>
     body.debug .container,
     body.debug .container-fluid {
       outline: 2px double blue;
@@ -27,19 +27,19 @@
       outline: 2px dotted forestgreen;
       outline-offset: -3px;
     }
-  </style>
+  </style> -->
 
 </head>
 
 <header class="container-fluid">
-  <section class="row justify-content-between">
-    <div class="col-6">
-      <h1 class="text-start">Cleanup Clicker!</h1>
+  <section class="row header-row">
+    <div class="col-6 d-flex align-items-center">
+      <h1>Cleanup Clicker!</h1>
     </div>
-    <div class="col-6">
-      <h2 class="text-end">Lifetime Karma Earned: <span>
+    <div class="col-6 d-flex align-items-center justify-content-end">
+      <h3>Total Karma Earned This Game: <span id="lifetime-karma">
           <!-- TODO lifetime karma earned here -->
-        </span></h2>
+        </span></h3>
     </div>
   </section>
 </header>
@@ -49,34 +49,54 @@
     <!-- SECTION Current Karma Count -->
     <section class="row">
       <div class="col-12 text-center">
-        <h2>Karma:<span>
-            <!-- TODO current karma here -->
-          </span></h2>
+        <h2>Karma: <span id="current-karma">
+            0 </span></h2>
       </div>
     </section>
 
     <!-- SECTION Store and stats cards -->
     <section class="row justify-content-between">
       <div class="col-4 d-flex justify-content-center">
-        <div>
-          <!-- TODO Store card here -->
-          <h3>Store Card</h3>
+        <!-- TODO Store card here -->
+        <div class="my-card">
+          <h3 class="text-center">Store Card</h3>
+          <section class="row">
+            <div class="col-8">
+              <h5 onclick="buyUpgrade('tools')" class="hover"><i class="mdi mdi-tools"></i> Tools (+1) | 20</h5>
+            </div>
+            <div class="col-4">
+              <!-- QTY here -->
+            </div>
+          </section>
         </div>
       </div>
+
       <div class="col-4 d-flex justify-content-center">
-        <div>
-          <!-- TODO Stats card here -->
-          <h3>Stats Card</h3>
+        <!-- TODO Stats card here -->
+        <div class="my-card">
+          <h3 class="text-center">Stats Card</h3>
+          <section class="row">
+            <div class="col-8">
+              <h5>Karma per click:</h5>
+              <h5>Karma per second:</h5>
+            </div>
+            <div class="col-4 text-center">
+              <h5>1</h5>
+              <h5>0</h5>
+            </div>
+            <div class="col-12 align-self-end">
+              <h5><i class="mdi mdi-tools"></i></h5>
+            </div>
+          </section>
         </div>
       </div>
     </section>
 
     <!-- SECTION Clickable image -->
     <section class="row justify-content-center">
-      <div class="col-4">
-        <img src="plastic-bottle.png" alt="discarded plastic bottle">
+      <div class="col-4 d-flex justify-content-center">
+        <img onclick="cleanUp()" src="plastic-bottle.png" alt="discarded plastic bottle" class="bottle-img hover">
       </div>
-
     </section>
 
   </main>
