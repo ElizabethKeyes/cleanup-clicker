@@ -8,6 +8,11 @@ header {
   height: 10vh;
 }
 
+.header-img {
+  height: 8vh;
+  margin-right: 1em;
+}
+
 .my-bg {
   background-image: url(background2.png);
   background-position: center;

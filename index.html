@@ -9,9 +9,7 @@
     integrity='sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD' crossorigin='anonymous'>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.1.96/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="style.css">
-
-  <!-- TODO add favicon (waves?) -->
-  <link rel="icon" href="">
+  <link rel="icon" href="favicon.png">
   <title>Cleanup Clicker</title>
 
   <!-- <style>
@@ -37,6 +35,7 @@
 <header class="container-fluid">
   <section class="row header-row">
     <div class="col-6 d-flex align-items-center">
+      <img src="favicon.png" alt="a cartoon wave crashing" class="header-img">
       <h1>Cleanup Clicker!</h1>
     </div>
     <div class="col-6 d-flex align-items-center justify-content-end">
@@ -92,11 +91,17 @@
               <h5>1</h5>
               <h5>0</h5>
             </div>
-            <div class="col-12">
-              <h5><i class="mdi mdi-tools"></i></h5>
+            <div class="col-12 mt-3 d-flex justify-content-evenly">
+              <h5><i class="mdi mdi-tools display-6"></i></h5>
+              <h5><i class="mdi mdi-search-web display-6"></i></h5>
+              <h5><i class="mdi mdi-account-heart display-6"></i></h5>
+              <h5><i class="mdi mdi-ferry display-6"></i></h5>
             </div>
-            <div class="col-12">
-              <h5>1</h5>
+            <div class="col-12 d-flex justify-content-evenly" id="current-upgrades">
+              <h5>0</h5>
+              <h5>0</h5>
+              <h5>0</h5>
+              <h5>0</h5>
             </div>
           </section>
         </div>

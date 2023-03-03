@@ -65,10 +65,12 @@ function drawKarma() {
 function drawStats() {
   let statsElem = document.getElementById("stats")
   let upgradesKarma = 0
+  let intUpgradeKarma = 0
   upgrades.forEach(u => upgradesKarma += u.currentKarma)
+  intUpgrades.forEach(u => intUpgradeKarma += u.currentKarma)
   let template = `
 <h5>${bottle.karma + upgradesKarma}</h5>
-<h5>0</h5>`
+<h5>${intUpgradeKarma}</h5>`
   statsElem.innerHTML = template
 }
 
@@ -94,17 +96,19 @@ function buyIntUpgrade(name) {
     newUpgrade.quantity++
   } else window.alert("You don't have enough karma for that!")
   console.log(newUpgrade);
+  drawKarma()
+  drawStats()
 }
 
-// REVIEW interval is adding 2 instead of just one
 function intervalUpgrades() {
   let intUpgradeKarma = 0
   intUpgrades.forEach(i => {
     intUpgradeKarma += i.currentKarma
-    karma += intUpgradeKarma
   })
-  console.log(intUpgradeKarma)
+  karma += intUpgradeKarma
+  console.log(intUpgradeKarma, 'intUpgradeKarma')
   drawKarma()
+  drawStats()
 }
 
 setInterval(intervalUpgrades, 1000)
