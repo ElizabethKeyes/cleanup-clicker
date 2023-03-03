@@ -36,7 +36,7 @@
     <!-- SECTION Store and stats cards -->
     <section class="row justify-content-between">
       <div class="col-4 d-flex justify-content-center">
-        <!-- TODO Store card here -->
+        <!-- store card -->
         <div class="my-card">
           <h3 class="text-center">Store</h3>
           <section class="row">
@@ -56,18 +56,14 @@
               </h5>
             </div>
             <div class="col-4 text-end pe-4" id="upgrade-price">
-              <h5 class="mb-3">20</h5>
-              <h5 class="mb-3">40</h5>
-              <h5 class="mb-3">100</h5>
-              <h5 class="mb-3">200</h5>
-              <!-- price here -->
+              <!-- prices here -->
             </div>
           </section>
         </div>
       </div>
 
       <div class="col-4 d-flex justify-content-center">
-        <!-- TODO Stats card here -->
+        <!-- stats card -->
         <div class="my-card">
           <h3 class="text-center">Stats</h3>
           <section class="row">
@@ -110,13 +106,19 @@
 
       <div class="col-6">
         <h4>Lifetime Karma Earned: <span id="lifetime-karma">
-            <!-- TODO lifetime karma earned here -->
+            <!-- lifetime karma earned here -->
           </span></h4>
       </div>
       <div class="col-6">
         <h4>Lifetime Karma Spent: <span id="spent-karma">
             <!-- spent karma -->
           </span></h4>
+      </div>
+      <div class="col-12 text-start">
+        <h5 class="hidden" id="achievements">Achievements:</h5>
+        <img src="first-upgrade.png" title="Purchased Your First Upgrade" class="hidden chieves" id="first-upgrade">
+        <img src="volunteer-karma.png" title="Your Volunteer Earned 10 Karma!" class="hidden chieves"
+          id="volunteer-karma">
       </div>
     </section>
   </footer>

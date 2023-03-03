@@ -51,6 +51,9 @@ let spentKarmaElem = document.getElementById("spent-karma")
 
 drawUpgradePrice()
 loadInfo()
+checkButtons()
+
+// SECTION game logic
 
 function cleanUp() {
   let upgradesKarma = 0
@@ -64,8 +67,11 @@ function cleanUp() {
 }
 
 function buyUpgrade(list, name) {
+  console.log(list, name)
   let newUpgrade = list.find(u => u.name == name)
   if (karma >= newUpgrade.price) {
+    firstUpgrade(list, name)
+    firstVolunteer(list, name)
     newUpgrade.currentKarma = newUpgrade.maxKarma
     newUpgrade.maxKarma += newUpgrade.incrementKarma
     karma -= newUpgrade.price
@@ -149,6 +155,8 @@ function drawUpgradeStats() {
 
 // SECTION local storage functions
 
+// TODO allow achievements to persist through page loads?
+
 function saveInfo() {
   window.localStorage.setItem("karma", JSON.stringify(karma))
   window.localStorage.setItem("lifetime-karma", JSON.stringify(lifetimeKarma))
@@ -170,6 +178,26 @@ function loadInfo() {
   drawUpgradePrice()
   drawKarma()
   drawStats()
+}
+
+// SECTION achievements
+
+function firstUpgrade(list, name) {
+  if (list == upgrades) {
+    if (upgrades[0].quantity == 0 && upgrades[1].quantity == 0) {
+      window.alert("Congratulations! You've earned an achievement for purchasing your first upgrade.")
+      document.getElementById("achievements").classList.remove("hidden")
+      document.getElementById("first-upgrade").classList.remove("hidden")
+    }
+  }
+}
+
+function firstVolunteer(list, name) {
+  if (list == intUpgrades && name == "volunteer") {
+    if (intUpgrades[0].quantity == 0)
+      window.alert("Congratulations! You've enlisted your first volunteer!")
+    document.getElementById("volunteer-karma").classList.remove("hidden")
+  }
 }
 
 // SECTION interval
