@@ -63,16 +63,27 @@
         <div class="my-card">
           <h3 class="text-center">Store</h3>
           <section class="row">
-            <div class="col-8">
-              <h5 onclick="buyUpgrade('tools')" class="hover"><i class="mdi mdi-tools"></i> Tools (+1) | 20</h5>
-              <h5 onclick="buyUpgrade('net')" class="hover"><i class="mdi mdi-search-web"></i> Net (+2) | 40</h5>
-              <h5 onclick="buyIntUpgrade('volunteer')" class="hover"><i class="mdi mdi-account-heart"></i> Volunteer
-                (+1/s)
-                | 100</h5>
-              <h5 onclick="buyIntUpgrade('boat')" class="hover"><i class="mdi mdi-ferry"></i>Boat (+2/s) | 200</h5>
+            <div class="col-8 ps-4">
+              <h5 onclick="buyUpgrade(upgrades, 'tools')" class="hover mb-3 text-danger" id="tools"><i
+                  class="mdi mdi-tools"></i>
+                Tools (+1)
+              </h5>
+              <h5 onclick="buyUpgrade(upgrades, 'mask')" class="hover mb-3 text-danger" id="mask"><i
+                  class="mdi mdi-diving-scuba-mask"></i>
+                Mask (+2)
+              </h5>
+              <h5 onclick="buyUpgrade(intUpgrades, 'volunteer')" class="hover mb-3 text-danger" id="volunteer"><i
+                  class="mdi mdi-account-heart"></i>Volunteer (+1/s)</h5>
+              <h5 onclick="buyUpgrade(intUpgrades, 'boat')" class="hover mb-3 text-danger" id="boat"><i
+                  class="mdi mdi-ferry"></i>Boat (+2/s)
+              </h5>
             </div>
-            <div class="col-4">
-              <!-- QTY here -->
+            <div class="col-4 text-end pe-4" id="upgrade-price">
+              <h5 class="mb-3">20</h5>
+              <h5 class="mb-3">40</h5>
+              <h5 class="mb-3">100</h5>
+              <h5 class="mb-3">200</h5>
+              <!-- price here -->
             </div>
           </section>
         </div>
@@ -83,21 +94,21 @@
         <div class="my-card">
           <h3 class="text-center">Stats</h3>
           <section class="row">
-            <div class="col-8">
+            <div class="col-8 ps-4">
               <h5>Karma per click:</h5>
               <h5>Karma per second:</h5>
             </div>
-            <div class="col-4 text-center" id="stats">
+            <div class="col-4 text-end pe-4" id="stats">
               <h5>1</h5>
               <h5>0</h5>
             </div>
             <div class="col-12 mt-3 d-flex justify-content-evenly">
               <h5><i class="mdi mdi-tools display-6"></i></h5>
-              <h5><i class="mdi mdi-search-web display-6"></i></h5>
+              <h5><i class="mdi mdi-diving-scuba-mask display-6"></i></h5>
               <h5><i class="mdi mdi-account-heart display-6"></i></h5>
               <h5><i class="mdi mdi-ferry display-6"></i></h5>
             </div>
-            <div class="col-12 d-flex justify-content-evenly" id="current-upgrades">
+            <div class="col-12 d-flex justify-content-evenly" id="upgrade-stats">
               <h5>0</h5>
               <h5>0</h5>
               <h5>0</h5>
