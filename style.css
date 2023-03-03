@@ -1,3 +1,7 @@
+body {
+  user-select: none;
+}
+
 header {
   height: 10vh;
   border-bottom: navy solid 3px;
@@ -41,4 +45,10 @@ header {
 .bottle-img:active {
   transform: translateX(10px);
   transition: all ease .05s
+}
+
+footer {
+  position: fixed;
+  bottom: 0px;
+  padding-bottom: 1em;
 }

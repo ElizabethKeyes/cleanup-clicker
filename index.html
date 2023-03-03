@@ -11,25 +11,6 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="favicon.png">
   <title>Cleanup Clicker</title>
-
-  <!-- <style>
-    body.debug .container,
-    body.debug .container-fluid {
-      outline: 2px double blue;
-      outline-offset: -2px;
-    }
-
-    body.debug .row {
-      outline: 2px dashed red;
-      outline-offset: -2px;
-    }
-
-    body.debug [class*="col-"] {
-      outline: 2px dotted forestgreen;
-      outline-offset: -3px;
-    }
-  </style> -->
-
 </head>
 
 <header class="container-fluid">
@@ -38,15 +19,11 @@
       <img src="favicon.png" alt="a cartoon wave crashing" class="header-img">
       <h1>Cleanup Clicker!</h1>
     </div>
-    <div class="col-6 d-flex align-items-center justify-content-end">
-      <h3>Total Karma Earned This Game: <span id="lifetime-karma">
-          <!-- TODO lifetime karma earned here -->
-        </span></h3>
-    </div>
+
   </section>
 </header>
 
-<body class="debug my-bg">
+<body oncontextmenu="return false;" class="my-bg">
   <main class="container-fluid">
     <!-- SECTION Current Karma Count -->
     <section class="row">
@@ -128,6 +105,21 @@
 
   </main>
 
+  <footer class="container-fluid">
+    <section class="row text-light text-center">
+
+      <div class="col-6">
+        <h4>Lifetime Karma Earned: <span id="lifetime-karma">
+            <!-- TODO lifetime karma earned here -->
+          </span></h4>
+      </div>
+      <div class="col-6">
+        <h4>Lifetime Karma Spent: <span id="spent-karma">
+            <!-- spent karma -->
+          </span></h4>
+      </div>
+    </section>
+  </footer>
 
 
   <script src="app.js"></script>
