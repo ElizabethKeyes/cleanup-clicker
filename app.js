@@ -5,7 +5,7 @@ let upgrades = [
     maxKarma: 1,
     incrementKarma: 1,
     quantity: 0,
-    price: 2
+    price: 20
   },
   {
     name: 'mask',
@@ -13,7 +13,7 @@ let upgrades = [
     maxKarma: 2,
     incrementKarma: 2,
     quantity: 0,
-    price: 4
+    price: 40
   },
 ]
 
@@ -21,18 +21,18 @@ let intUpgrades = [
   {
     name: 'volunteer',
     currentKarma: 0,
-    maxKarma: 1,
+    maxKarma: 4,
     incrementKarma: 1,
     quantity: 0,
-    price: 10
+    price: 100
   },
   {
     name: 'boat',
     currentKarma: 0,
-    maxKarma: 2,
+    maxKarma: 8,
     incrementKarma: 2,
     quantity: 0,
-    price: 20
+    price: 200
   }
 ]
 
@@ -158,12 +158,14 @@ function saveInfo() {
 }
 
 function loadInfo() {
-  karma = JSON.parse(window.localStorage.getItem("karma"))
-  lifetimeKarma = JSON.parse(window.localStorage.getItem("lifetime-karma"))
-  upgrades = JSON.parse(window.localStorage.getItem("upgrades"))
-  intUpgrades = JSON.parse(window.localStorage.getItem("intUpgrades"))
-  spentKarma = JSON.parse(window.localStorage.getItem("spent-karma"))
-
+  let karmaData = JSON.parse(window.localStorage.getItem("karma"))
+  if (karmaData) {
+    karma = JSON.parse(window.localStorage.getItem("karma"))
+    lifetimeKarma = JSON.parse(window.localStorage.getItem("lifetime-karma"))
+    upgrades = JSON.parse(window.localStorage.getItem("upgrades"))
+    intUpgrades = JSON.parse(window.localStorage.getItem("intUpgrades"))
+    spentKarma = JSON.parse(window.localStorage.getItem("spent-karma"))
+  }
   drawUpgradeStats()
   drawUpgradePrice()
   drawKarma()
@@ -185,4 +187,4 @@ function intervalUpgrades() {
   checkButtons()
 }
 
-setInterval(intervalUpgrades, 1000)
+setInterval(intervalUpgrades, 3000)
