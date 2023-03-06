@@ -1,3 +1,5 @@
+// SECTION variables and startup functions
+
 let upgrades = [
   {
     name: 'tools',
@@ -40,7 +42,6 @@ const bottle = {
   karma: 1
 }
 
-
 let karma = 0;
 let lifetimeKarma = 0;
 let spentKarma = 0;
@@ -65,6 +66,7 @@ function cleanUp() {
   lifetimeKarma += (bottle.karma + upgradesKarma)
   drawKarma()
   checkButtons()
+  upstandingCitizen()
 }
 
 function buyUpgrade(list, name) {
@@ -88,6 +90,8 @@ function buyUpgrade(list, name) {
   drawUpgradeStats()
   drawUpgradePrice()
   checkButtons()
+  tenUpgrades()
+  bigSpender()
 }
 
 function checkButtons() {
@@ -109,6 +113,56 @@ function checkButtons() {
       document.getElementById(intUpgrades[i].name).style.pointerEvents = 'auto';
       document.getElementById(intUpgrades[i].name).classList.remove("text-danger");
     }
+  }
+}
+
+// SECTION achievements
+
+function firstUpgrade(list, name) {
+  if (list == upgrades) {
+    if (upgrades[0].quantity == 0 && upgrades[1].quantity == 0) {
+      window.alert("Achievement Earned: Purchased Your First Upgrade")
+      document.getElementById("achievements").classList.remove("hidden")
+      document.getElementById("first-upgrade").classList.remove("hidden")
+      achievements.push("first-upgrade")
+    }
+  }
+}
+
+function firstVolunteer(list, name) {
+  if (list == intUpgrades && name == "volunteer") {
+    if (intUpgrades[0].quantity == 0) {
+      window.alert("Achievement Earned: Enlisted Your First Volunteer!")
+      document.getElementById("first-volunteer").classList.remove("hidden")
+      achievements.push("first-volunteer")
+    }
+  }
+}
+
+function tenUpgrades() {
+  let upgradesAmt = 0
+  upgrades.forEach(u => upgradesAmt += u.quantity)
+  intUpgrades.forEach(i => upgradesAmt += i.quantity)
+  if (upgradesAmt == 10) {
+    window.alert("Achievement Earned: Ten Upgrades Purchased")
+    document.getElementById("ten-upgrades").classList.remove("hidden")
+    achievements.push('ten-upgrades')
+  }
+}
+
+function bigSpender() {
+  if (spentKarma > 500 && !achievements.includes("big-spender")) {
+    window.alert("Achievement Earned: Big Spender (Spent 500 Karma)")
+    achievements.push("big-spender")
+    document.getElementById("big-spender").classList.remove("hidden")
+  }
+}
+
+function upstandingCitizen() {
+  if (lifetimeKarma > 1000 && !achievements.includes("upstanding-citizen")) {
+    window.alert("Achievement Earned: Upstanding Citizen (Earn 1000 Lifetime Karma)")
+    achievements.push("upstanding-citizen")
+    document.getElementById("upstanding-citizen").classList.remove("hidden")
   }
 }
 
@@ -165,8 +219,6 @@ function drawAchievements() {
 
 // SECTION local storage functions
 
-// TODO allow achievements to persist through page loads?
-
 function saveInfo() {
   window.localStorage.setItem("karma", JSON.stringify(karma))
   window.localStorage.setItem("lifetime-karma", JSON.stringify(lifetimeKarma))
@@ -193,27 +245,6 @@ function loadInfo() {
   drawAchievements()
 }
 
-// SECTION achievements
-
-function firstUpgrade(list, name) {
-  if (list == upgrades) {
-    if (upgrades[0].quantity == 0 && upgrades[1].quantity == 0) {
-      window.alert("Congratulations! You've earned an achievement for purchasing your first upgrade.")
-      document.getElementById("achievements").classList.remove("hidden")
-      document.getElementById("first-upgrade").classList.remove("hidden")
-      achievements.push("first-upgrade")
-    }
-  }
-}
-
-function firstVolunteer(list, name) {
-  if (list == intUpgrades && name == "volunteer") {
-    if (intUpgrades[0].quantity == 0)
-      window.alert("Congratulations! You've enlisted your first volunteer!")
-    document.getElementById("first-volunteer").classList.remove("hidden")
-    achievements.push("first-volunteer")
-  }
-}
 
 // SECTION interval
 
@@ -228,6 +259,7 @@ function intervalUpgrades() {
   drawKarma()
   drawStats()
   checkButtons()
+  upstandingCitizen()
 }
 
 setInterval(intervalUpgrades, 3000)
