@@ -44,6 +44,7 @@ const bottle = {
 let karma = 0;
 let lifetimeKarma = 0;
 let spentKarma = 0;
+let achievements = [];
 
 let currentKarmaElem = document.getElementById("current-karma")
 let lifetimeKarmaElem = document.getElementById("lifetime-karma")
@@ -153,6 +154,15 @@ function drawUpgradeStats() {
   upgradeStatsElem.innerHTML = template
 }
 
+function drawAchievements() {
+  if (achievements.length !== 0) {
+    for (let i = 0; i < achievements.length; i++) {
+      document.getElementById("achievements").classList.remove("hidden")
+      document.getElementById(achievements[i]).classList.remove("hidden")
+    }
+  }
+}
+
 // SECTION local storage functions
 
 // TODO allow achievements to persist through page loads?
@@ -163,6 +173,7 @@ function saveInfo() {
   window.localStorage.setItem("upgrades", JSON.stringify(upgrades))
   window.localStorage.setItem("intUpgrades", JSON.stringify(intUpgrades))
   window.localStorage.setItem("spent-karma", JSON.stringify(spentKarma))
+  window.localStorage.setItem("achievements", JSON.stringify(achievements))
 }
 
 function loadInfo() {
@@ -173,11 +184,13 @@ function loadInfo() {
     upgrades = JSON.parse(window.localStorage.getItem("upgrades"))
     intUpgrades = JSON.parse(window.localStorage.getItem("intUpgrades"))
     spentKarma = JSON.parse(window.localStorage.getItem("spent-karma"))
+    achievements = JSON.parse(window.localStorage.getItem("achievements"))
   }
   drawUpgradeStats()
   drawUpgradePrice()
   drawKarma()
   drawStats()
+  drawAchievements()
 }
 
 // SECTION achievements
@@ -188,6 +201,7 @@ function firstUpgrade(list, name) {
       window.alert("Congratulations! You've earned an achievement for purchasing your first upgrade.")
       document.getElementById("achievements").classList.remove("hidden")
       document.getElementById("first-upgrade").classList.remove("hidden")
+      achievements.push("first-upgrade")
     }
   }
 }
@@ -196,7 +210,8 @@ function firstVolunteer(list, name) {
   if (list == intUpgrades && name == "volunteer") {
     if (intUpgrades[0].quantity == 0)
       window.alert("Congratulations! You've enlisted your first volunteer!")
-    document.getElementById("volunteer-karma").classList.remove("hidden")
+    document.getElementById("first-volunteer").classList.remove("hidden")
+    achievements.push("first-volunteer")
   }
 }
 
